@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Novo Filme - FGV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #333333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333333;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        button.back-button {
+            background-color: #6c757d;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button.back-button:hover {
+            background-color: #5a6268;
+        }
+
+        button:last-child {
+            margin-bottom: 0;
+        }
+
+        .alert-danger {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #dc3545;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Cadastrar Novo Filme</h2>
+    <form (ngSubmit)="onSubmit()" #movieForm="ngForm" action="/movies/" method="post">
+        <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" [(ngModel)]="newMovie.title" required>
+        </div>
+        <div class="form-group">
+            <label for="year">Ano:</label>
+            <input type="number" id="year" name="year" [(ngModel)]="newMovie.year" required>
+        </div>
+        <div class="form-group">
+            <label for="cover">URL da Capa:</label>
+            <input type="url" id="cover" name="cover" [(ngModel)]="newMovie.cover" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Descrição:</label>
+            <textarea id="description" name="description" [(ngModel)]="newMovie.description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="midia">URL da Mídia:</label>
+            <input type="url" id="midia" name="midia" [(ngModel)]="newMovie.midia" required>
+        </div>
+        <button type="submit">Cadastrar</button>
+        <button type="button" class="back-button" (click)="clearForm()">Limpar</button>
+        <button type="button" class="back-button" routerLink="/">Voltar</button>
+
+        <div *ngIf="errorMessage" class="alert-danger">
+            {{ errorMessage }}
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Filme - FGV</title>
+    <!-- Estilo CSS incluído diretamente no HTML -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7fafc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card-container {
+            max-width: 800px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .title-container {
+            background-color: #2b6cb0;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            padding: 20px;
+            color: #ffffff;
+            text-align: center;
+            border-bottom: 2px solid #1a4d80;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .content-container {
+            padding: 20px;
+        }
+
+        .cover img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .link:hover {
+            color: #0056b3;
+        }
+
+        .favorite-button, .back-button {
+            background-color: #2b6cb0;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .favorite-button:hover, .back-button:hover {
+            background-color: #1a4d80;
+        }
+    </style>
+</head>
+<body>
+
+<div class="row justify-content-center" *ngIf="movie">
+    <div class="col-12 mt-5">
+        <div class="card-container">
+
+            <!-- TITLE -->
+            <div class="title-container">
+                <span class="title">{{movie.title}} ({{movie.year}})</span>
+            </div>
+
+            <!-- BODY -->
+            <div class="content-container">
+
+                <!-- COVER -->
+                <div class="cover">
+                    <img src="{{movie.cover}}" alt="Movie Cover" />
+                </div>
+
+                <!-- CONTENT -->
+                <div class="description">
+                    "{{movie.description}}"
+                </div>
+
+                <!-- LINK TO MOVIE -->
+                <a href="{{movie.midia}}" class="link">Assistir ao filme</a>
+
+                <!-- BUTTONS -->
+                <div>
+                    <button class="favorite-button" (click)="markAsFavorite()">
+                        {{ movie.isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos' }}
+                    </button>
+
+                    <!-- Message for already marked as favorite -->
+                    <div *ngIf="movie.isFavorite">Filme já está marcado como favorito</div>
+
+                    <!-- BACK BUTTON -->
+                    <button class="back-button" (click)="goBack()">Voltar</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
