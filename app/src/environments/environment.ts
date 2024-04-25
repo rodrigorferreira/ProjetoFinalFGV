@@ -3,9 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   //apiURL: 'http://127.0.0.1:8000'
-  apiURL:'database-1.cyiyyngfxbqh.us-east-1.rds.amazonaws.com'
+  apiURL:'http://streaming-lb-1240536670.us-east-1.elb.amazonaws.com'
+  
 };
 
 /*

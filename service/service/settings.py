@@ -25,7 +25,7 @@ SECRET_KEY = '4zmv@5q#v&cn^a4aen*2x^99@v1%6ctp0f944(m$h1g$bm3*0d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
@@ -96,7 +96,7 @@ DATABASES = {
     # }
 
     'default':{
-        'ENGINE':'django.db.backends.postgresql',
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
         'NAME':'streamingfgv',
         'USER':'postgres',
         'PASSWORD':'12345678',
