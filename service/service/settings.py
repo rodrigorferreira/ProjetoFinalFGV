@@ -90,9 +90,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+
+    'default':{
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME':'streamingfgv',
+        'USER':'postgres',
+        'PASSWORD':'12345678',
+        'HOST':'database-1.cyiyyngfxbqh.us-east-1.rds.amazonaws.com',
+        'PORT':'5432',
+
     }
 }
 
